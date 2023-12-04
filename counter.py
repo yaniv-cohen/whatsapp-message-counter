@@ -9,7 +9,7 @@ def calc_spammer(lastdata):
     keys = list(lastdata.keys())
     maxkey = max(values)
     index = values.index(maxkey)
-    print(keys[index],"is the spammer in this group with ",values[index],"messages.")
+    print(keys[index]," is the champion in this group with ",values[index],"messages.")
 
 def create_dataset(contacts,checklist):
     for elem in contacts:
@@ -17,7 +17,13 @@ def create_dataset(contacts,checklist):
             lastdata[elem]=1
         else:
             lastdata[elem] = lastdata[elem] + 1
-    print(lastdata)
+    data_list = list(lastdata.items())
+    sorted_list = sorted(data_list, key=lambda x: x[1])
+    count = 0
+    for item in sorted_list:
+        print(str(item[0]) +": score: "+str(item[1]) +"  Rating:" + str(len(sortedList)-count))
+        count+=1
+    # print(sorted(lastdata,key=lambda x: lastdata[keyList.index(x.key())]))
     calc_spammer(lastdata)
 
 def create_checklist(contacts):
@@ -41,6 +47,7 @@ def flatten_list(contacts):
     filter_list(contacts)
 
 def extract_data(string):
+    print("Date range is " +str(string[0]).strip().split(" ")[0].split(",")[0].strip() + " "+ str(string[len(string)-1]).split(" ")[0].split(",")[0].strip())
     for i in range(len(string)):
         match = re.findall('-(.*):',string[i])
         contacts.append(match)
